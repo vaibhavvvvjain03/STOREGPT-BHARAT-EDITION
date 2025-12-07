@@ -1,0 +1,421 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  html.light-mode {
+    color-scheme: light;
+  }
+
+  body {
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #1a1a1a 100%);
+    @apply text-white overflow-x-hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  body.light-mode,
+  html.light-mode body {
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 50%, #f5f5f5 100%);
+    @apply text-gray-900;
+  }
+
+  * {
+    @apply selection:bg-orange-600 selection:text-white;
+  }
+
+  .light-mode * {
+    @apply selection:bg-orange-500 selection:text-white;
+  }
+}
+
+@layer components {
+  /* Indian Color Theme */
+  :root {
+    --color-saffron: #FF9933;
+    --color-green: #128807;
+    --color-blue: #1F77F3;
+    --color-orange: #FF6B35;
+  }
+
+  .glass-panel {
+    @apply bg-gray-900/30 backdrop-blur-xl border border-orange-500/20 rounded-lg;
+  }
+
+  .light-mode .glass-panel,
+  html.light-mode .glass-panel {
+    @apply bg-orange-50/80 backdrop-blur-xl border border-orange-300/50 shadow-lg;
+  }
+
+  .glass-button {
+    @apply bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 rounded-lg transition-all duration-300 text-white;
+  }
+
+  .light-mode .glass-button,
+  html.light-mode .glass-button {
+    @apply bg-orange-100/80 hover:bg-orange-200/90 backdrop-blur-xl border border-orange-400/60 text-gray-900 shadow-md;
+  }
+
+  .glass-input {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all duration-300;
+  }
+
+  .light-mode .glass-input,
+  html.light-mode .glass-input {
+    @apply bg-white/60 backdrop-blur-xl border border-orange-300/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:bg-white/80 shadow-sm;
+  }
+
+  .grid-background {
+    background-image:
+      linear-gradient(rgba(255, 153, 51, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 153, 51, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .light-mode .grid-background,
+  html.light-mode .grid-background {
+    background-image:
+      linear-gradient(rgba(255, 107, 53, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 107, 53, 0.08) 1px, transparent 1px);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent;
+  }
+
+  .light-mode .gradient-text,
+  html.light-mode .gradient-text {
+    @apply bg-gradient-to-r from-orange-600 via-orange-700 to-red-700 bg-clip-text text-transparent;
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(255, 153, 51, 0.3);
+  }
+
+  .light-mode .glow-effect,
+  html.light-mode .glow-effect {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/50;
+  }
+
+  .light-mode .hover-glow,
+  html.light-mode .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-orange-600/40;
+  }
+}
+
+/* Light mode specific overrides */
+.light-mode,
+html.light-mode {
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --bg-overlay: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Text color overrides for light mode */
+.light-mode .text-white,
+html.light-mode .text-white {
+  color: #111827 !important;
+}
+
+.light-mode .text-gray-300,
+html.light-mode .text-gray-300 {
+  color: #374151 !important;
+}
+
+.light-mode .text-gray-400,
+html.light-mode .text-gray-400 {
+  color: #4b5563 !important;
+}
+
+.light-mode .text-gray-500,
+html.light-mode .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Background color overrides for light mode */
+.light-mode .bg-black,
+html.light-mode .bg-black {
+  background-color: #ffffff !important;
+}
+
+.light-mode .bg-black\/50,
+html.light-mode .bg-black\/50 {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.light-mode .bg-black\/30,
+html.light-mode .bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .bg-gray-900,
+html.light-mode .bg-gray-900 {
+  background-color: #f9fafb !important;
+}
+
+.light-mode .bg-gray-800,
+html.light-mode .bg-gray-800 {
+  background-color: #f3f4f6 !important;
+}
+
+.light-mode .bg-gray-700,
+html.light-mode .bg-gray-700 {
+  background-color: #e5e7eb !important;
+}
+
+/* Border color overrides for light mode */
+.light-mode .border-white\/10,
+html.light-mode .border-white\/10 {
+  border-color: rgba(249, 115, 22, 0.3) !important;
+}
+
+.light-mode .border-white\/20,
+html.light-mode .border-white\/20 {
+  border-color: rgba(249, 115, 22, 0.4) !important;
+}
+
+/* KhataWidget specific light mode overrides */
+.light-mode .bg-black\/50,
+html.light-mode .bg-black\/50 {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.light-mode .bg-gray-900\/80,
+html.light-mode .bg-gray-900\/80 {
+  background-color: rgba(249, 250, 251, 0.95) !important;
+}
+
+.light-mode .bg-gray-800\/70,
+html.light-mode .bg-gray-800\/70 {
+  background-color: rgba(243, 244, 246, 0.9) !important;
+}
+
+.light-mode .bg-white\/5,
+html.light-mode .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.light-mode .bg-white\/10,
+html.light-mode .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ProductCard specific light mode overrides - Light backgrounds with orange text, NO GREY */
+.light-mode .bg-gray-900\/40,
+html.light-mode .bg-gray-900\/40 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 247, 237, 0.98) 100%) !important;
+}
+
+.light-mode .bg-gray-800\/40,
+html.light-mode .bg-gray-800\/40 {
+  background: linear-gradient(135deg, rgba(255, 247, 237, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%) !important;
+}
+
+.light-mode .bg-gray-800\/50,
+html.light-mode .bg-gray-800\/50 {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(249, 115, 22, 0.25) !important;
+}
+
+.light-mode .bg-gray-700,
+html.light-mode .bg-gray-700 {
+  background-color: rgba(255, 237, 213, 0.6) !important;
+}
+
+/* Product card text in light mode - ALL ORANGE, NO GREY */
+.light-mode .product-card-3d-inner .text-white,
+html.light-mode .product-card-3d-inner .text-white {
+  color: #ea580c !important;
+}
+
+.light-mode .product-card-3d-inner h3,
+html.light-mode .product-card-3d-inner h3 {
+  color: #ea580c !important;
+}
+
+.light-mode .product-card-3d-inner .text-gray-400,
+html.light-mode .product-card-3d-inner .text-gray-400 {
+  color: #fb923c !important;
+}
+
+.light-mode .product-card-3d-inner .text-gray-300,
+html.light-mode .product-card-3d-inner .text-gray-300 {
+  color: #f97316 !important;
+}
+
+.light-mode .product-card-3d-inner .text-gray-600,
+html.light-mode .product-card-3d-inner .text-gray-600 {
+  color: #fb923c !important;
+}
+
+.light-mode .product-card-3d-inner input,
+html.light-mode .product-card-3d-inner input {
+  color: #ea580c !important;
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(249, 115, 22, 0.3) !important;
+}
+
+.light-mode .product-card-3d-inner input::placeholder,
+html.light-mode .product-card-3d-inner input::placeholder {
+  color: #fb923c !important;
+  opacity: 0.7;
+}
+
+.light-mode .product-card-3d-inner label,
+html.light-mode .product-card-3d-inner label {
+  color: #f97316 !important;
+}
+
+.light-mode .product-card-3d-inner .border-white\/10,
+html.light-mode .product-card-3d-inner .border-white\/10 {
+  border-color: rgba(249, 115, 22, 0.2) !important;
+}
+
+.light-mode .text-orange-400,
+html.light-mode .text-orange-400 {
+  color: #ea580c !important;
+}
+
+.light-mode .text-orange-300,
+html.light-mode .text-orange-300 {
+  color: #f97316 !important;
+}
+
+.light-mode .text-red-300,
+html.light-mode .text-red-300 {
+  color: #dc2626 !important;
+}
+
+.light-mode .text-green-400,
+html.light-mode .text-green-400 {
+  color: #16a34a !important;
+}
+
+.light-mode .text-blue-400,
+html.light-mode .text-blue-400 {
+  color: #2563eb !important;
+}
+
+/* ProductCard button and icon colors in light mode */
+.light-mode .bg-black\/30,
+html.light-mode .bg-black\/30 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.light-mode .bg-black\/50,
+html.light-mode .bg-black\/50 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.light-mode .hover\:bg-black\/50:hover,
+html.light-mode .hover\:bg-black\/50:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Spotlight cursor */
+.spotlight {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 9999;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(40px);
+}
+
+/* 3D Glass plane */
+.glass-plane {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.glass-plane-inner {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.37),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+/* Product card 3D effect */
+.product-card-3d {
+  perspective: 1200px;
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.3));
+}
+
+.product-card-3d-inner {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(255, 255, 255, 0.05),
+    inset 0 0 20px rgba(249, 115, 22, 0.1);
+}
+
+.product-card-3d:hover .product-card-3d-inner {
+  transform: translateY(-20px) rotateX(8deg) rotateY(-8deg) scale(1.08);
+  box-shadow: 
+    0 40px 80px rgba(249, 115, 22, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(249, 115, 22, 0.2);
+}
+
+.product-card-3d:hover {
+  filter: drop-shadow(0 30px 40px rgba(249, 115, 22, 0.4));
+}
+
+/* Enhanced hover glow */
+.hover-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.product-card-3d:hover .hover-glow::before {
+  opacity: 1;
+}
+
+/* Sound wave animation */
+@keyframes soundwave {
+  0% {
+    r: 0;
+    opacity: 1;
+  }
+  100% {
+    r: 50;
+    opacity: 0;
+  }
+}
+
+.sound-wave {
+  animation: soundwave 1.5s ease-out infinite;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
